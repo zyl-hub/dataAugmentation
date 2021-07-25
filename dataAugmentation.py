@@ -7,6 +7,7 @@ def dataAugmentation(imgPath, imgOutPath):
     img = Image.open(imgPath)
     img = np.array(img)
     WIDTH, HEIGHT, DEPTH = img.shape
+    print(img.shape)
     print("\033[0;32;40m1/6: Flipping\033[0m")
     flipped_img = np.fliplr(img)
     Leftimg = img.copy()
@@ -40,7 +41,7 @@ def dataAugmentation(imgPath, imgOutPath):
                 Downimg[j][i] = Downimg[j - 20][i]
 
     print("\033[0;32;40m6/6: Noise\033[0m")
-    noisePower = 5
+    noisePower = 20
     noise = np.random.randint(noisePower, size=(WIDTH, HEIGHT, DEPTH), dtype='uint8')
     for i in range(WIDTH):
         for j in range(HEIGHT):
